@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The select Element</h2>
+
+<p>The select element defines a drop-down list:</p>
+
+  <label for="shape">Choose a Geometrical Shape:</label>
+  <select id="geom" name="geom">
+    <option value="">select the shape</option>
+    <option value='circle' >Circle</option>
+    <option value="rectangle" >Rectangle</option>
+    <option value="Triangle" >Triangle</option>
+  </select><br><br>
+  <p></p>
+  
+  <script>
+    const sel = document.querySelector('select');
+    
+    const text= document.querySelector('p');
+
+    sel.onchange = setGeometry;
+
+    function setGeometry() {
+      const choice = sel.value;
+
+      if(choice === 'circle'){
+        var x = document.createElement("INPUT");
+        text.textContent='Enter the radius of circle';
+        x.setAttribute("type", "text");
+        x.setAttribute("value", "");
+        x.setAttribute("id", "radius");
+        x.setAttribute("placeholder", "Enter the radius");
+        document.body.appendChild(x);
+        
+        var btn = document.createElement("BUTTON");
+        var t = document.createTextNode("Calculate Area");
+        btn.appendChild(t);
+        document.body.appendChild(btn)
+        btn.onclick= function(){
+          area()
+        };
+        function area(){
+          var r=document.getElementById("radius").value;
+          
+          var a = 2*Math.PI*parseInt(r);
+          document.write("The area of Circle is:"+a);
+        }
+      }else if(choice === 'rectangle'){
+        var x1 = document.createElement("INPUT");
+        var x2 = document.createElement("INPUT");
+        text.textContent='Enter the Length and breadth of Rectangle';
+        x1.setAttribute("type", "text");
+        x1.setAttribute("value", "");
+        x1.setAttribute("id", "length");
+        x1.setAttribute("placeholder", "length");
+        x2.setAttribute("type", "text");
+        x2.setAttribute("value", "");
+        x2.setAttribute("id", "breadth");
+        x2.setAttribute("placeholder", "breadth");
+        document.body.appendChild(x1);
+        document.body.appendChild(x2);
+        
+        var btn = document.createElement("BUTTON");
+        var t = document.createTextNode("Calculate Area");
+        btn.appendChild(t);
+        document.body.appendChild(btn)
+        btn.onclick= function(){
+          area()
+        };
+        function area(){
+          var l=document.getElementById("length").value;
+          var b=document.getElementById("breadth").value;
+          var a = parseInt(l)*parseInt(b);
+          document.write("The area of Rectangle is:"+a);
+        }
+      }
+      else {
+        var x1 = document.createElement("INPUT");
+        var x2 = document.createElement("INPUT");
+        text.textContent='Enter the base and height of Triangle';
+        x1.setAttribute("type", "text");
+        x1.setAttribute("value", "");
+        x1.setAttribute("id", "base");
+        x1.setAttribute("placeholder", "base");
+        x2.setAttribute("type", "text");
+        x2.setAttribute("value", "");
+        x2.setAttribute("id", "height");
+        x2.setAttribute("placeholder", "height");
+        document.body.appendChild(x1);
+        document.body.appendChild(x2);
+        
+        var btn = document.createElement("BUTTON");
+        var t = document.createTextNode("Calculate Area");
+        btn.appendChild(t);
+        document.body.appendChild(btn)
+        btn.onclick= function(){
+          area()
+        };
+        function area(){
+          var b=document.getElementById("base").value;
+          var h=document.getElementById("height").value;
+          var a = 0.5*parseInt(b)*parseInt(h);
+          document.write("The area of Triangle is:"+a);
+        }
+      }
+    }
+  </script>
+</body>
+</html>
